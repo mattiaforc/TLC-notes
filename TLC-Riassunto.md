@@ -123,3 +123,33 @@ $$F[\{x_{n-m}\}]=X_s(\omega)e^{-j\omega mT}$$
 $$z_n=\sum_{i=-\infty}^{+\infty}x_iy_{n-i}$$
 -   **Convoluzione fra una serie temporale ed una funzione tempo-continua**: date la serie temporale $\{x_n\}$ e la funzione tempo-continua $g(t)$, la loro convoluzione definisce una funzione tempo continua espressa da: 
 $$y(t)=\{x_n\}*g(t)=\sum_{n=-\infty}^{+\infty}x_ng(t-nT) \tag{12}$$
+
+# Trasformate 
+**Trasformata di un impulso rettangolare** di ampiezza A e durata $\tau$:
+$$X(\omega)=\tau Asinc\bigg(\frac{\omega\tau}{2\pi}\bigg)$$
+**Segnale PAM, definizione**: Considerata una successione di impulsi rettangolari ottenuta campionando una funzione tempo continua $x(t)$ con intervallo $T$ e mantentendo i valori campionati per un intervallo $\tau < T$. La successione in esame, aventi intervallo di ripetizione e durata costanti, ma ampiezze variabili, costituisce un segnale PAM (*Pulse Amplitude Modulation*). Può essere visto come convoluzione fra la serie temporale $\{x_n\}$ e l'impulso rettangolare $g(t)$, di ampiezza unitaria e durata $\tau$. Si ha: 
+$$y(t)=\sum_{n=-\infty}^{+\infty}x_ng(t-nT)=\{x_n\}*g(t)$$
+
+**Trasformata di un segnale PAM** ottenuto da una serie di campioni:
+$$Y(\omega)=X_s(\omega)G(\omega)=\frac{1}{T}\sum_{k=-\infty}^{+\infty}X(\omega+k\omega_o)G(\omega)$$
+dove la trasformata $G(\omega)$ è definita come:
+$$G(\omega)=\tau sinc\bigg(\frac{\omega\tau}{2\pi}\bigg)e^{-j\omega\frac{\tau}{2}} \tag{13}$$
+
+# Trasformata di Fourier Discreta (DFT)
+La trasformata discreta di Fourier non si applica più a una serie infinita di termini, ma ad una n-pla cioè ad un vettore.
+L'elemento q-esimo dell'n-pla di arrivo è definito come:
+$$X_q=\sum_{n=0}^{N-1}x_ne^{-j\frac{2\pi}{N}nq}\qquad q=0,1,...,N-1\tag{14}$$
+
+**Antitrasformata IDFT**: 
+La formula che ci restituisce un termine dell'n-pla di partenza a partire da quella di arrivo è la seguente:
+$$x_n=\frac{1}{N}\sum_{q=0}^{N-1}X_qe^{j\frac{2\pi}{N}nq}\qquad n=0,1,...,N-1 \tag{15}$$
+
+### TODO: Legame fra trasformata di Fourier discret e continua
+
+# Sistemi lineari
+Un sistema ingresso-uscita in cui $x(t)$ indica un segnale d'ingresso tempo-continuo e $y(t)=Q\big[x(t)\big]$ la corrispondente risposta, essa pure tempo-continua. 
+Il sistema si dice lineare se:
+$$Q\big[c_1x_1(t)+c_2x_2(t)\big]=c_1Q\big[x_1(t)\big]+c_2Q\big[x_2(t)\big]$$
+
+**Sistemi tempo-inviarianti**: se la risposta al segnale ritardato è la risposta ritardata, qualunque sia il ritardo $t_o$:
+$$y(t-t_o)=Q\big[x(t-t_o)\big]$$
