@@ -153,3 +153,63 @@ $$Q\big[c_1x_1(t)+c_2x_2(t)\big]=c_1Q\big[x_1(t)\big]+c_2Q\big[x_2(t)\big]$$
 
 **Sistemi tempo-inviarianti**: se la risposta al segnale ritardato è la risposta ritardata, qualunque sia il ritardo $t_o$:
 $$y(t-t_o)=Q\big[x(t-t_o)\big]$$
+
+**Risposta impulsiva di un sistema lineare**: La risposta impulsiva $h(t)$ è definita come la risposta della rete all'impulso di Dirac $\delta(t)$ (ci limitiamo al caso reale). Si consideri in ingresso la funzione ausiliaria $D(t, \Delta)$. La risposta $y_\Delta(t)$ alla funzione ausiliaria è la risposta impulsiva:
+$$h(t)=\lim_{\Delta\Rightarrow0}y_\Delta(t)$$
+Con $x(t)$ segnale generico in ingresso nel dominio dei tempi, la relazione con l'uscita è:
+$$y(t)=x(t)*h(t) \tag{16}$$
+
+# Funzione di trasferimento di una rete lineare (FDT)
+**Definizione**: Nel dominio delle frequenze, è la trasformata di Fourier della risposta impulsiva:
+$$H(\omega)F\big[h(t)\big]$$
+E di conseguenza:
+$$Y(\omega)=X(\omega)H(\omega)$$
+
+**Ampiezza e Fase**:
+$$\begin{cases} T(\omega)=|H(\omega)| \qquad \text{Ampiezza}\\ \beta(\omega)=arg\{H(\omega)\ \qquad \text{Fase}
+\end{cases}$$
+
+**Proprietà della FDT** (rete lineare tempo-invariante):
+-   **Risposta ad un fasore**: Fasore in ingresso $\Rightarrow$ fasore in uscita, medesima frequenza angolare e diverso numero complesso rappresentativo. Se il segnale in ingresso è $x(t)=e^{j\omega_1t}$, la rete risponde con: 
+$$y(t)=c_ye^{j\omega_1t}, \qquad c_y=c_xH(\omega_1) \tag{17}$$
+-   **Risposta ad una sinusoide**: Sinusoide in ingresso, $h(t)\in\R \Rightarrow$ sinusoide in uscita, medesima  frequenza angolare e diversa ampiezza e fase, cioè diverso numero complesso rappresentativo. Se $x(t)=A_xcos(\omega_1t-\varphi_x)$, la rete risponde con (dove $A_y = A_xT(\omega_1)$, e $\varphi_y=\varphi_x+\beta(\omega_1)$):
+$$y(t)=A_xT(\omega_1)cos\big[\omega_1t-\varphi_x-\beta(\omega_1)\big]=A_ycos(\omega_1t-\varphi_y)\tag{18}$$
+
+**FDT sistemi in cascata**: è uguale al prodotto delle funzioni di trasferimento dei vari blocchi:
+$$H(\omega)=H(\omega_1)H(\omega_2)...H(\omega_n)\tag{19}$$
+
+# Teoria della modulazione
+**Modulazione**: Modulazione di una oscillazione sinusoidale, a frequenza sufficientemente elevata, detta *portante*. Il segnale $x(t)$ si dice segnale *modulante* in quanto modula le caratteristiche della portante (ampiezza e/o argomento). Il segnale ottenuto $s(t)$ è detto oscillazione *modulata*.
+
+**Espressione della portante non modulata (stato iniziale)**: 
+$$s_o(t)=V_ocos\big[\omega_ot-\varphi_o]$$
+
+**Espressione generale di un'oscillazione sinusoidale modulata**: 
+$$s(t)=V(t)cos[\varphi(t)]\qquad V(t)\ge 0$$
+
+In relazione all'oscillazione modulata si hanno le seguenti definizioni:
+-   $V(t) \Rightarrow$ ampiezza istantanea;
+-   $\varphi(t)\Rightarrow$ fase istantanea;
+-   $\omega(t)=\varphi(t) \Rightarrow$ pulsazione istantanea; 
+
+In relazione all'oscillazione portante si hanno le seguenti definizioni:
+-   $V(t) = V_o\qquad\Rightarrow$ ampiezza (costante);
+-   $\varphi(t)=\omega_ot-\varphi_o\qquad\Rightarrow$ argomento del coseno (lineare in $t$) ;
+-   $\omega(t)=\omega_o \qquad\Rightarrow$ pulsazione (costante);
+
+**Definizione deviazioni**: in quanto definite come differenze introdotte dalla modulazione. Si chiamano istantanee, perchè dipendono da t.
+-   $V(t)-V_o\qquad\Rightarrow$ deviazione istantanea di ampiezza;
+-   $m(t)=\frac{V(t)-V_o}{V_o}\Rightarrow V(t)=V_o\big[1+m(t)\big]\qquad\Rightarrow$ deviazione (istantanea) relativa di ampiezza poichè $V(t)\ge0,$ segue $m(t)\ge-1$;
+-   $\alpha(t)=\varphi(t)-(\omega_ot-\varphi_o)=\int_{-\infty}^{t}\Delta\omega(\tau)d\tau \qquad\Rightarrow$ deviazione istantanea di fase;
+-   $\Delta\omega(t)=\omega(t)-\omega_o=\alpha(t)\qquad\Rightarrow$ deviazione istantanea di pulsazione;
+
+**Espressione generale di un'oscillazione sinusoidale modulata:** ottenuta introducendo nell'espressione di un'oscillazione modulata la deviazione relativa di ampiezza e la deviazione istantanea di fase:
+$$s(t)=V_o\big[1+m(t)\big]cos\big[\omega_ot+\alpha(t)-\varphi_o\big]$$
+
+# Principali modulazioni analogiche
+-   **Modulazione di ampiezza (AM)**: la deviazione relativa di ampiezza è proporzionale al segnale modulante; la deviazione di fase è nulla. Viene modificata solo l'ampiezza dell'oscillazione portante. Inoltre in AM $kx(t)\ge-1$ a causa dell'analogo vincolo su $m(t)$, da cui deriva la condizione a destra nella seconda formula:
+$$AM=\begin{cases} m(t) = kx(t) \\ \alpha(t) = 0 \end{cases} \\ s(t)=V_o\big[1+kx(t)\big]cos\big[\omega_ot-\varphi_o\big] \qquad \text{con }V_o\big[1+kx(t)\big]\ge0$$
+-   **Modulazione di fase (PM)**: la deviazione di fase è proporzionale al segnale modulante; la deviazione relativa di ampiezza è nulla. Dato il legame fra deviazione di fase e deviazione di frequenza in PM si ha $\Delta\omega(t)=\alpha(t)=kx(t)$:
+$$PM=\begin{cases} m(t) = 0 \\ \alpha(t)=kx(t) \end{cases} \\ s(t) = V_ocos\big[\omega_ot+kx(t)-\varphi_o\big]$$
+-   **Modulazione di frequenza (FM)**: la deviazione di pulsazione è proporzionale al segnale modulante; la deviazione relativa di ampiezza è nulla. Dato il legame fra deviazione e deviazione di frequenza in FM si ha $\alpha(t)=\int_{-\infty}^{t}kx(\tau)d\tau$:
+$$FM=\begin{cases} m(t) = 0 \\ \Delta\omega(t)=kx(t) \end{cases} \\ s(t) = V_o\bigg[\omega_ot+k\int_{-\infty}^{t}x(\tau)d\tau-\varphi_o\bigg]$$
