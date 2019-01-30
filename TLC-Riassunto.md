@@ -40,7 +40,7 @@ $$a_n=\frac{2}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}x(t)cos[n\omega_0t]dt \text{ s
 $$b_n =  \frac{2}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}x(t)sin[n\omega_0t]dt \text{ se } n>0\tag{4}$$
 
 # Trasformata ed integrale di Fourier (funzioni aperiodiche tempo continue)
-| | Trasformata (analisi, tempi $\Rightarrow$frequenze)| Antitrasformata (sintesi, tempi $\Leftarrow$frequenze)|
+| | Trasformata (analisi, tempi $\rightarrow$frequenze)| Antitrasformata (sintesi, tempi $\leftarrow$frequenze)|
 |- |-|-|
 |Dominio pulsazioni |$X(\omega)=\int_{-\infty}^{+\infty}x(t)e^{-j\omega t}dt$| $x(t)=\frac{1}{2\pi}\int_{-\infty}^{+\infty}X(\omega)e^{j\omega t}d\omega$|
 |Dominio frequenze |$X_f(f)=\int_{-\infty}^{+\infty}x(t)e^{-j2\pi ft}dt$| $x(t)=\int_{-\infty}^{+\infty}X_f(f)e^{j2\pi ft}df$|
@@ -73,9 +73,9 @@ $$\int_{-\infty}^{+\infty}\delta(t)dt=1$$
 -   **Parità**:
 $$\int_{-\infty}^{+\infty}x(t)\delta(t-t_0)dt=\int_{-\infty}^{+\infty}x(t)\delta(t_0-t)dt$$
 -   **Convoluzione**:
-$$x(t)*\delta(t)=\int_{-\infty}^{+\infty}x(\tau)\delta(\tau-t)d\tau=x(t) \\ \Rightarrow x(t)*\delta(t)=<x, \delta_t>=<x(\tau), \delta(\tau-t))>=x(t)$$
+$$x(t)*\delta(t)=\int_{-\infty}^{+\infty}x(\tau)\delta(\tau-t)d\tau=x(t) \\ \rightarrow x(t)*\delta(t)=<x, \delta_t>=<x(\tau), \delta(\tau-t))>=x(t)$$
 -   **Cambio di argomento**:
-$$|\alpha|\delta(\alpha t)=\delta(t) \text{ se } \alpha \ne 0 \Rightarrow \delta(\alpha t)=\frac{\delta(t)}{|\alpha|} \text{ se } \alpha \ne 0 \Rightarrow \delta(-x)=\delta(x)$$
+$$|\alpha|\delta(\alpha t)=\delta(t) \text{ se } \alpha \ne 0 \rightarrow \delta(\alpha t)=\frac{\delta(t)}{|\alpha|} \text{ se } \alpha \ne 0 \rightarrow \delta(-x)=\delta(x)$$
 -   **Trasformata di Fourier**:
 $$\int_{-\infty}^{+\infty}\delta(t)e^{-j\omega t}dt=1$$
 -   **Gradino unitario**:
@@ -155,7 +155,7 @@ $$Q\big[c_1x_1(t)+c_2x_2(t)\big]=c_1Q\big[x_1(t)\big]+c_2Q\big[x_2(t)\big]$$
 $$y(t-t_o)=Q\big[x(t-t_o)\big]$$
 
 **Risposta impulsiva di un sistema lineare**: La risposta impulsiva $h(t)$ è definita come la risposta della rete all'impulso di Dirac $\delta(t)$ (ci limitiamo al caso reale). Si consideri in ingresso la funzione ausiliaria $D(t, \Delta)$. La risposta $y_\Delta(t)$ alla funzione ausiliaria è la risposta impulsiva:
-$$h(t)=\lim_{\Delta\Rightarrow0}y_\Delta(t)$$
+$$h(t)=\lim_{\Delta\rightarrow0}y_\Delta(t)$$
 Con $x(t)$ segnale generico in ingresso nel dominio dei tempi, la relazione con l'uscita è:
 $$y(t)=x(t)*h(t) \tag{16}$$
 
@@ -170,9 +170,9 @@ $$\begin{cases} T(\omega)=|H(\omega)| \qquad \text{Ampiezza}\\ \beta(\omega)=arg
 \end{cases}$$
 
 **Proprietà della FDT** (rete lineare tempo-invariante):
--   **Risposta ad un fasore**: Fasore in ingresso $\Rightarrow$ fasore in uscita, medesima frequenza angolare e diverso numero complesso rappresentativo. Se il segnale in ingresso è $x(t)=e^{j\omega_1t}$, la rete risponde con: 
+-   **Risposta ad un fasore**: Fasore in ingresso $\rightarrow$ fasore in uscita, medesima frequenza angolare e diverso numero complesso rappresentativo. Se il segnale in ingresso è $x(t)=e^{j\omega_1t}$, la rete risponde con: 
 $$y(t)=c_ye^{j\omega_1t}, \qquad c_y=c_xH(\omega_1) \tag{17}$$
--   **Risposta ad una sinusoide**: Sinusoide in ingresso, $h(t)\in\R \Rightarrow$ sinusoide in uscita, medesima  frequenza angolare e diversa ampiezza e fase, cioè diverso numero complesso rappresentativo. Se $x(t)=A_xcos(\omega_1t-\varphi_x)$, la rete risponde con (dove $A_y = A_xT(\omega_1)$, e $\varphi_y=\varphi_x+\beta(\omega_1)$):
+-   **Risposta ad una sinusoide**: Sinusoide in ingresso, $h(t)\in\R \rightarrow$ sinusoide in uscita, medesima  frequenza angolare e diversa ampiezza e fase, cioè diverso numero complesso rappresentativo. Se $x(t)=A_xcos(\omega_1t-\varphi_x)$, la rete risponde con (dove $A_y = A_xT(\omega_1)$, e $\varphi_y=\varphi_x+\beta(\omega_1)$):
 $$y(t)=A_xT(\omega_1)cos\big[\omega_1t-\varphi_x-\beta(\omega_1)\big]=A_ycos(\omega_1t-\varphi_y)\tag{18}$$
 
 **FDT sistemi in cascata**: è uguale al prodotto delle funzioni di trasferimento dei vari blocchi:
@@ -188,20 +188,20 @@ $$s_o(t)=V_ocos\big[\omega_ot-\varphi_o]$$
 $$s(t)=V(t)cos[\varphi(t)]\qquad V(t)\ge 0$$
 
 In relazione all'oscillazione modulata si hanno le seguenti definizioni:
--   $V(t) \Rightarrow$ ampiezza istantanea;
--   $\varphi(t)\Rightarrow$ fase istantanea;
--   $\omega(t)=\varphi(t) \Rightarrow$ pulsazione istantanea; 
+-   $V(t) \rightarrow$ ampiezza istantanea;
+-   $\varphi(t)\rightarrow$ fase istantanea;
+-   $\omega(t)=\varphi(t) \rightarrow$ pulsazione istantanea; 
 
 In relazione all'oscillazione portante si hanno le seguenti definizioni:
--   $V(t) = V_o\qquad\Rightarrow$ ampiezza (costante);
--   $\varphi(t)=\omega_ot-\varphi_o\qquad\Rightarrow$ argomento del coseno (lineare in $t$) ;
--   $\omega(t)=\omega_o \qquad\Rightarrow$ pulsazione (costante);
+-   $V(t) = V_o\qquad\rightarrow$ ampiezza (costante);
+-   $\varphi(t)=\omega_ot-\varphi_o\qquad\rightarrow$ argomento del coseno (lineare in $t$) ;
+-   $\omega(t)=\omega_o \qquad\rightarrow$ pulsazione (costante);
 
 **Definizione deviazioni**: in quanto definite come differenze introdotte dalla modulazione. Si chiamano istantanee, perchè dipendono da t.
--   $V(t)-V_o\qquad\Rightarrow$ deviazione istantanea di ampiezza;
--   $m(t)=\frac{V(t)-V_o}{V_o}\Rightarrow V(t)=V_o\big[1+m(t)\big]\qquad\Rightarrow$ deviazione (istantanea) relativa di ampiezza poichè $V(t)\ge0,$ segue $m(t)\ge-1$;
--   $\alpha(t)=\varphi(t)-(\omega_ot-\varphi_o)=\int_{-\infty}^{t}\Delta\omega(\tau)d\tau \qquad\Rightarrow$ deviazione istantanea di fase;
--   $\Delta\omega(t)=\omega(t)-\omega_o=\alpha(t)\qquad\Rightarrow$ deviazione istantanea di pulsazione;
+-   $V(t)-V_o\qquad\rightarrow$ deviazione istantanea di ampiezza;
+-   $m(t)=\frac{V(t)-V_o}{V_o}\rightarrow V(t)=V_o\big[1+m(t)\big]\qquad\rightarrow$ deviazione (istantanea) relativa di ampiezza poichè $V(t)\ge0,$ segue $m(t)\ge-1$;
+-   $\alpha(t)=\varphi(t)-(\omega_ot-\varphi_o)=\int_{-\infty}^{t}\Delta\omega(\tau)d\tau \qquad\rightarrow$ deviazione istantanea di fase;
+-   $\Delta\omega(t)=\omega(t)-\omega_o=\alpha(t)\qquad\rightarrow$ deviazione istantanea di pulsazione;
 
 **Espressione generale di un'oscillazione sinusoidale modulata:** ottenuta introducendo nell'espressione di un'oscillazione modulata la deviazione relativa di ampiezza e la deviazione istantanea di fase:
 $$s(t)=V_o\big[1+m(t)\big]cos\big[\omega_ot+\alpha(t)-\varphi_o\big]$$
@@ -213,3 +213,36 @@ $$AM=\begin{cases} m(t) = kx(t) \\ \alpha(t) = 0 \end{cases} \\ s(t)=V_o\big[1+k
 $$PM=\begin{cases} m(t) = 0 \\ \alpha(t)=kx(t) \end{cases} \\ s(t) = V_ocos\big[\omega_ot+kx(t)-\varphi_o\big]$$
 -   **Modulazione di frequenza (FM)**: la deviazione di pulsazione è proporzionale al segnale modulante; la deviazione relativa di ampiezza è nulla. Dato il legame fra deviazione e deviazione di frequenza in FM si ha $\alpha(t)=\int_{-\infty}^{t}kx(\tau)d\tau$:
 $$FM=\begin{cases} m(t) = 0 \\ \Delta\omega(t)=kx(t) \end{cases} \\ s(t) = V_o\bigg[\omega_ot+k\int_{-\infty}^{t}x(\tau)d\tau-\varphi_o\bigg]$$
+
+**Indice di modulazione AM**: 
+$$m_a=max(|m(t)|) \qquad m_a\in[0,1]$$
+L'indice vale 0 per assenza totale di modulazione, ed 1 se si ha il massimo della modulazione. $V_{max}$ e $V_{min}$ sono la massima e minima ampiezza che l'oscillazione portante modulata raggiunge:
+$$\begin{cases} V_{max} = 2V_o \qquad \text{se } m_a = 1 \\ V_{min}=V_o \qquad \text{se } m_a=0  \end{cases}$$
+
+**Sovramodulazione (modulazione ibrida)**: Se si porta  il modulatore AM in sovramodulazione, ovvero ad avere $k*max(|x(t)|) > 1$, il segnale va in sovramodulazione e la modulazione diventa ibrida (la sovramodulazione di un segnale AM, cambiando la variazione di fase, non è piu un segnale AM). In questo caso si ha:
+$$\text{sovramodulazione AM}=\begin{cases} V(t)=V_o(|1+kx(t)|) \qquad \text{poichè } V_o\big[1+kx(t)\big]\ge0 \\
+\alpha(t) =  
+    \begin{cases}
+        0 \qquad \text{se } \quad 1+kx(t) > 0 \\
+        \pi \qquad \text{se } \quad 1+kx(t)<0
+    \end{cases}
+\end{cases}$$
+
+**Teorema fondamentale della modulazione, trasformata del prodotto del segnale con una sinusoide**:
+Dato un segnale $x(t)$ dotato di trasformata $X(\omega)$, calcolare la trasformata $S(\omega)$ della funzione: $s(t) = x(t)cos(\omega_ot)$:
+$$S(\omega)=\frac{1}{2}X(\omega-\omega_o)+\frac{1}{2}X(\omega+\omega_o) \tag{20}$$
+
+# Inviluppo complesso rappresentativo di oscillazioni modulate
+**Definizione**: (estensione del metodo simbolico di Steinmetz). Nell'estensione un'oscillazione sinusoidale, anche se modulata, è ancora vista come parte reale di un fasore, però al posto del numero complesso rappresentativo si ha una funzione complessa del tempo, detta **inviluppo complesso rappresentativo**. Dati:
+$$s(t)=V(t)cos\big[\varphi(t)\big] \xrightarrow{conoscendo} \quad \alpha(t)=\varphi(t)-(\omega_ot-\varphi_o) \rightarrow \quad s(t)=V(t)cos\big[\omega_ot+\alpha(t)-\varphi_o \big]$$
+Si può scrivere l'inviluppo complesso $i(t)$ come:
+$$s(t) = Re\Big\{i(t)e^{j\omega_ot}\Big\} \qquad \text{con} \quad i(t)=V(t)e^{j\big[\alpha(t)-\varphi_o\big]}$$
+**Proprietà**: Consideriamo ora due oscillazioni modulate diverse, ma aventi la stessa pulsazione della portante:
+$$s_1(t)=Re\Big\{i_1(t)e^{j\omega_ot}\Big\} \qquad \text{con} \quad i_1(t)=V_1(t)e^{j\big[\alpha_1(t)-\varphi_{o1}\big]} \\ s_2(t)=Re\Big\{i_2(t)e^{j\omega_ot}\Big\} \qquad \text{con}\quad i_2(t)=V_2(t)e^{j\big[\alpha_2(t)-\varphi_{o2}\big]}$$
+Per la somma risulta:
+$$s(t)=s_1(t)+s_2(t)=Re\Big\{i_1(t)e^{j\omega_ot}\Big\}+Re\Big\{i_2(t)e^{j\omega_ot}\Big\}=Re\Big\{\big[i_1(t)+i_2(t)\big]e^{j\omega_ot}\Big\}=Re\Big\{i(t)e^{j\omega_ot}\Big\}$$
+dove l'inviluppo complesso della somma è dato dalla somma dei due inviluppi:
+$$i(t)=i_1(t)+i_2(t) \tag{21}$$
+Si ha:
+$$\begin{cases} V(t)=\big|i(t)\big| \\ \alpha(t)=arg\big\{i(t)\big\} \end{cases}$$
+
