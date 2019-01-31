@@ -246,3 +246,191 @@ $$i(t)=i_1(t)+i_2(t) \tag{21}$$
 Si ha:
 $$\begin{cases} V(t)=\big|i(t)\big| \\ \alpha(t)=arg\big\{i(t)\big\} \end{cases}$$
 
+# Caratterstiche spettrali di una oscillazione AM
+L'inviluppo complesso di una modulazione AM è dato da:
+$$i(t)=V_o\big[1+kx(t)\big] \qquad \text{con} \quad V_o\big[1+kx(t)\big]\ge0$$
+
+**Oscillazioni DSB (Double-Side Band)**: La trasformata di $s(t)$ può essere calcolata direttamente tramite la somma di tre termini: portante, banda laterale superiore, banda laterale inferiore:
+$$s(t)=V_ocos(\omega_ot)+\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)cos\big[(\omega_o+\omega)t-\varphi(\omega)\big]d\omega + \frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)cos\big[(\omega_o-\omega)t+\varphi(\omega)\big]d\omega$$
+
+**Oscillazioni SSB (Single-Side Band)**: Poichè ciascuno dei due segnali corrispondenti alla banda laterale superiore od inferiore contiente la stessa informazione, è possibile eliminare una delle due bande laterali. Viene generato a partire da una oscillazione AM, che viene filtrata con un filtro passa-banda che provveda ad eliminare la banda indesiderata. Le espressioni della SSB sono:
+$$s(t)=V_ocos(\omega_ot)+\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)cos\big[(\omega_o+\omega)t-\varphi(\omega)\big]d\omega \\ s(t)=Re\big\{i(t)e^{j\omega_ot}\big\} \qquad \text{con} \quad i(t)=V_o+\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)e^{j\big[\omega t-\varphi(\omega)\big]}d\omega$$
+
+**Oscillazioni DSB-SC (DSB Suppressed Carrier)**: In essa vengono mantenute entrambe le bande laterali, ma viene eliminata la portante, per risparmiare potenza, senza perdere il contenuto informativo relativo al segnale modulante. DI fatto si ottiene una modulazione a prodotto:
+$$s(t)=\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)cos\big[(\omega_o+\omega)t-\varphi(\omega)\big]d\omega+\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)cos\big[(\omega_o-\omega)t+\varphi(\omega)\big]d\omega \\ s(t)=Re\big\{i(t)e^{j\omega_ot}\big\} \qquad \text{con} \quad i(t)=\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)e^{j\big[\omega t-\varphi(\omega)\big]}d\omega + \frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)e^{-j\big[\omega t-\varphi(\omega)\big]}d\omega$$
+
+**Oscillazioni SSB-SC (SSB Supressed Carrier)**: A partire da una DSB-SC si elimina anche una delle due bande laterali mediante un filtro. Solitamente la portante non è soppressa del tutto ma solo attenuata, si parla di SSB a portante parzialmente soppressa. 
+Le espressioni sono:
+$$s(t)=\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)cos\big[(\omega_o+\omega)t-\varphi(\omega)\big]d\omega \\ s(t)=Re\big\{i(t)e^{j\omega_ot}\big\} \qquad \text{con} \quad i(t)=\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)e^{j\big[\omega t-\varphi(\omega)\big]}d\omega$$
+
+| | $s(t)$ | $s(t)=Re\big\{i(t)e^{j\omega_ot}\big\} \qquad \text{con} \quad i(t)$ 
+|-|-|-
+**DSB** | $V_ocos(\omega_ot)+\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)cos\big[(\omega_o+\omega)t-\varphi(\omega)\big]d\omega + \frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)cos\big[(\omega_o-\omega)t+\varphi(\omega)\big]d\omega$ | -
+|**SSB** | $V_ocos(\omega_ot)+\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)cos\big[(\omega_o+\omega)t-\varphi(\omega)\big]d\omega$ | $V_o+\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)e^{j\big[\omega t-\varphi(\omega)\big]}d\omega$ 
+| **DSB-SC** | $\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)cos\big[(\omega_o+\omega)t-\varphi(\omega)\big]d\omega+\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)cos\big[(\omega_o-\omega)t+\varphi(\omega)\big]d\omega$| $\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)e^{j\big[\omega t-\varphi(\omega)\big]}d\omega + \frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)e^{-j\big[\omega t-\varphi(\omega)\big]}d\omega$
+| **SSB-SC** | $\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)cos\big[(\omega_o+\omega)t-\varphi(\omega)\big]d\omega$| $\frac{V_ok}{2}\int_{\omega_i}^{\omega_m}V(\omega)e^{j\big[\omega t-\varphi(\omega)\big]}d\omega$
+
+# Modulazioni a prodotto
+**Modulatore**: La modulazione a prodotto può essere ottenuta direttamente, senza passare dall'AM, facendo il prodotto del segnle modulante $x(t)$ per una sinusoide tramite un circuito detto modulatore a prodotto o "mixer", ottenendo:
+$$s(t)=x(t)cos(\omega_ot)$$
+L'inviluppo complesso coincide con il segnale modulante: 
+$$i(t)=x(t)$$
+$$\text{modulazione a prodotto}\quad = \begin{cases} 
+    V(t) = |x(t)| \qquad \text{poichè} \quad V(t)\ge0 \\
+    \alpha(t)= \begin{cases} 0 \qquad \text {se} \quad x(t)>0 \\ \pi \qquad \text {se} \quad x(t)<0
+    \end{cases}
+\end{cases} \tag{22}$$
+Efficienza:
+$$n_f=\frac{\omega_m}{2\omega_m} = \frac{1}{2}$$
+Trasformata:
+$$S(\omega)=\frac{1}{2}X(\omega-\omega_o)+\frac{1}{2}X(\omega+\omega_o)$$
+
+**Demodulatore**: 
+La demodulazione si ottiene rimoltiplicando l'oscillazione modulata per la portante:
+$$u(t)=2s(t)cos(\omega_ot)=2x(t)cos^2(\omega_ot)$$
+
+# Modulazioni QAM (Quadrature Amplitude Modulation)
+La modulazione QAM consiste di due modulazioni a prodotto con la seconda portante sfasata in anticipo di $\pi/2$.
+
+**Modulatore**: Vi sono due segnali modulanti $x_1(t)$ e $x_2(t)$ aventi le stesse caratteristiche spettrali, e devono essere indipendenti. Si ha:
+$$s(t)=x_1(t)cos(\omega_ot)-x_2(t)sin(\omega_ot) \tag{23}$$
+L'inviluppo complesso è dato da:
+$$i(t)=x_1(t)+jx_2(t)$$
+Efficienza:
+$$n_f=\frac{\omega_m}{2\omega_m} = \frac{1}{2}$$
+**Demodulatore**: E' la somma di due demodulatori a prodotto. Il componente in fase (prima uscita $u_1$), e via in quadratura (seconda uscita $u_2$):
+$$u_1(t)=2s(t)cos(\omega_ot)=2x_1(t)cos^2(\omega_ot)-2x_2(t)sin(\omega_ot)cos(\omega_ot) \\ = x_1(t)+x_1(t)cos(2\omega_ot)+x_2(t)sin(2\omega_ot)$$
+$$u_2(t)= -2s(t)sin(\omega_ot)=2x_2(t)sin^2(\omega_ot)-2x_1(t)sin(\omega_ot)cos(\omega_ot) \\ = x_2(t)-x_2(t)cos(\omega_ot)-2x_1(t)sin(2\omega_ot)$$
+
+# Segnali ad energia ed a potenza finita
+**Potenza istantanea di un segnale**: Dato un segnale $x(t)$ in generale complesso, si definisce:
+$$p(t)=x^*(t)x(t)=\big|x(t)\big|^2$$
+**Potenza media di un segnale**: Dato un segnale $x(t)$, in generale complesso e definito il prodotto scalare tra funzione continue nel medesimo intervallo come $<f,g>=\int_{-\infty}^{+\infty}f(x)g(x)dx$, si definiscono potenza e potenza media:
+$$P=<\big|x(t)\big|^2>=\int_{-\infty}^{+\infty}\big|x(t)\big|^2dt = \lim_{T\rightarrow\infty}\int_{-T/2}^{T/2}\big|x(t)\big|^2dt, \qquad P_m= \frac{1}{T} \lim_{T\rightarrow\infty}\int_{-T/2}^{T/2}\big|x(t)\big|^2dt$$
+**Energia di un segnale**: dato un segnale $x(t)$ in generale complesso:
+$$E=\int_{-\infty}^{+\infty}\big|x(t)\big|^2dt$$
+
+**Segnale ad energia finita**: Se l'integrale che ne rappresenta l'energia converge. La potenza tende a zero, quindi non può essere anche a potenza finita.
+
+**Segnale a potenza finita**: nel caso in cui l'integrale che ne rappresenta la potenza converga ad un valore diverso da zero.
+
+**Valore efficace**: di una funzione periodica (per un segnale a potenza finita) il valore:
+$$x_{eff}=\lim_{T\rightarrow\infty}\sqrt{\frac{1}{T}\int_{-T/2}^{T/2}\big|x(t)\big|^2dt}=\sqrt{P}$$
+*Nota:* il valore efficace di una sinusoide $x(t)=Acos(\omega t - \varphi)$ è dato da $A/\sqrt{2}$.
+
+## Segnali ad energia finita
+
+**Funzione di crosscorrelazione**: Dati due segnali in generale complessi, $x(t)$ ed $y(t)$ ad energia finita, il coniugato del prodotto interno di uno di essi per la versione anticipata dell'altro:
+$$R_{xy}(\tau)=<x,y_\tau>^*=\int_{-\infty}^{\infty}x^*(t)y(t+\tau)dt$$
+**Funzione di autocorrelazione**:
+Nel particolare caso in cui $x(t)=y(t)$ prende il nome di autocorrelazione che viene definita:
+$$R_{x}(\tau)=<x,x_\tau>^*=\int_{-\infty}^{\infty}x^*(t)x(t+\tau)dt$$
+*Nota:* calcolata nell'origine rappresenta l'energia di un segnale.
+
+**Proprietà delle funzioni di cross ed autocorrelazione (energia finita)**:
+
+-   **Proprietà 1**: Per la funzione di crosscorrelazione vale la seguente proprietà:
+$$R_{xy}(\tau)=R_{yx}^*(-\tau)$$
+-   **Proprietà 2**: Per la funzione di autocorrelazione si ha (simmetria hermitiana):
+$$\big|R_x(\tau)\big|\le R_x(0)=E_x$$
+-   **Proprietà 3**: Per la funzione di crosscorrelazione vale la seguente relazione (prodotto di convoluzione):
+$$R_{xy}(\tau)=x^*(-\tau)*y(\tau)\tag{24}$$
+
+**Densità spettrale di energia (bilatera e riferita alle pulsazioni)**: Dati due segnali complessi $x(t)$ e $y(t)$, se coincidono si ottiene:
+$$E_{bil}(\omega)=\frac{F\big|R_x(\tau)\big|}{2\pi}=\frac{\big|X(\omega)\big|^2}{2\pi}$$
+
+**Densità spettrale di energia monolatera** se $x(t)$ è reale:
+$$E(\omega)=\begin{cases} 2E_{bil}(\omega) \qquad \text{se} \quad \omega > 0 \\ E_{bil}(\omega) \qquad \text {se} \quad \omega = 0
+\end{cases}$$
+
+**Densità riferite alle frequenze**:
+$$E_{f,bil}(f)=2\pi E_{bil}(2\pi f)$$
+
+**Trasformazione lineare tempo invariante di spettri di energia**:
+Siano $x(t)$ e $y(t)$ segnali rispettivamente in ingresso ed uscita ad una rete lineare tempo invariante, avente risposta impulsiva $h(t)$ e funzione di trasferimento $H(\omega)$:
+$$E_{y,bil}(\omega)=\big|H(\omega)\big|^2E_{x,bil}(\omega) \tag{28}$$
+
+## Segnali a potenza finita
+**Funzione di crosscorrelazione**:
+$$R_{xy}(\tau)=<x,y_\tau>^*=\lim_{T\rightarrow\infty}\frac{1}{T}\int_{-T/2}^{T/2}x^*(t)y(t+\tau)dt$$
+
+**Funzione di autocorrelazione**:
+$$R_{x}(\tau)=<x,x_\tau>^*=\lim_{T\rightarrow\infty}\frac{1}{T}\int_{-T/2}^{T/2}x^*(t)x(t+\tau)dt$$
+*Nota:* calcolata nell'origine rappresenta la potenza di un segnale.
+
+**Proprietà delle funzioni di crosscorrelazione ed autocorrelazione (potenza finita)**:
+-   **Proprietà 1**: Per la funzione di crosscorrelazione vale la seguente proprietà:
+$$R_{xy}(\tau)=R_{yx}^*(-\tau)$$
+-   **Proprietà 2**: Per la funzione di autocorrelazione si ha (simmetria hermitiana):
+$$\big|R_x(\tau)\big|\le R_x(0)=P_x \tag{26}$$
+
+**Densità spettrale di potenza (bilatera, riferita alle pulsazioni)**:
+$$P_{bil}=\frac{F\big[R_x(\tau)\big]}{2\pi}$$
+
+**Densità spettrale di potenza monolatera**:
+$$P(\omega)=\begin{cases} 2P_{bil}(\omega) \qquad \text{se} \quad \omega > 0 \\ P_{bil}(\omega) \qquad \text{se} \quad \omega = 0
+\end{cases}$$
+
+**Densità riferite alle frequenze**:
+$$P_{f,bil}(f)=2\pi P_{bil}(2\pi f)$$
+
+**Trasformazione lineare tempo invariante di spettri di potenza**:
+$$P_{y,bil}(\omega)=\big|H(\omega)\big|^2P_{x,bil}(\omega) \tag{29}$$
+
+## Segnali periodici a potenza finita
+**Funzione di crosscorrelazione**:
+$$R_{xy}(\tau)=\frac{1}{T}\int_{-T/2}^{T/2}x^*(t)y(t+\tau)dt$$
+
+**Funzione di autocorrelazione**: 
+$$R_x(\tau)=\frac{1}{T}\int^{T/2}_{-T/2}x^*(t)x(t+\tau)dt$$
+
+**Densità spettrale di potenza di segnali periodici**:
+$$P_{bil}(\omega)=\frac{F\big[R_x(\tau)\big]}{2\pi}=\sum_{n=-\infty}^{+\infty}|c_n|^2\delta(\omega-n\omega_o)$$
+In caso di segnali reali può essere scritta in forma monolatera ($A_0=c_0, A_n=2|c_n|$ con $n>0$):
+$$P(\omega)=A_0^2\delta(\omega)+\sum_{n=1}^{+\infty}\frac{A_n^2}{2}\delta(\omega-n\omega_o) \tag{27}$$
+
+**Tabella riassuntiva**:
+
+| | **Segnali a energia finita** | **Segnali a potenza finita** | **Segnali periodici a potenza finita**
+|-|-|-| -|
+|**Crosscorrelazione** $R_{xy}(\tau)=<x,y_\tau>^*$| $\int_{-\infty}^{\infty}x^*(t)y(t+\tau)dt$ | $\lim_{T\rightarrow\infty}\frac{1}{T}\int_{-T/2}^{T/2}x^*(t)y(t+\tau)dt$ | $R_{xy}(\tau)=\frac{1}{T}\int_{-T/2}^{T/2}x^*(t)y(t+\tau)dt$|
+| **Autocorrelazione** $R_{x}(\tau)=<x,x_\tau>^*$| $\int_{-\infty}^{\infty}x^*(t)x(t+\tau)dt$ | $\lim_{T\rightarrow\infty}\frac{1}{T}\int_{-T/2}^{T/2}x^*(t)x(t+\tau)dt$ | $R_x(\tau)=\frac{1}{T}\int^{T/2}_{-T/2}x^*(t)x(t+\tau)dt$
+| **Proprietà 1 (crosscorrelazione)** | $R_{xy}(\tau)=R_{yx}^*(-\tau)$ | $R_{xy}(\tau)=R_{yx}^*(-\tau)$ | -
+| **Proprietà 2 (autocorrelazione - simmetria hermitiana)** | $\|R_x(\tau)\|\le R_x(0)=E_x$ | $\|R_x(\tau)\|\le R_x(0)=P_x$ | -
+**Proprietà 3 (crosscorrelazione - prodotto di convoluzione):** | $R_{xy}(\tau)=x^*(-\tau)*y(\tau)$ | - |-
+**Densità spettrale bilatera** $\frac{F\big[R_x(\tau)\big]}{2\pi}$ | $E_{bil}(\omega)=\frac{\big\|X(\omega)\big\|^2}{2\pi}$ | $P_{bil}=\text{uguale}$ | $P_{bil}(\omega)=\sum_{n=-\infty}^{+\infty}\|c_n\|^2\delta(\omega-n\omega_o)$
+| **Densità spettrale monolatera** $(\omega>0)$ | $E(\omega)=2E_{bil}(\omega)$ | $P(\omega)=2P_{bil}(\omega)$ | $P(\omega)=A_0^2\delta(\omega)+\sum_{n=1}^{+\infty}\frac{A_n^2}{2}\delta(\omega-n\omega_o)$ 
+| **Densità spettrale monolatera** $(\omega = 0)$ | $E_{bil}(\omega)$ | $P_{bil}(\omega)$ | $\text{come sopra, non vi sono due casi in base alle } \omega$
+**Densità riferite alle frequenze** | $E_{f,bil}(f)=2\pi E_{bil}(2\pi f)$ | $P_{f,bil}(f)=2\pi P_{bil}(2\pi f)$ | -
+| **Trasformazioni lineari tempo invarianti di spettri** | $E_{y,bil}(\omega)=\|H(\omega)\|^2E_{x,bil}(\omega)$ | $P_{y,bil}(\omega)=\|H(\omega)\|^2P_{x,bil}(\omega)$ | -
+
+# Teorema di Parseval generalizzato e condizioni di ortogonalità:
+$$\int_{-\infty}^{\infty}x^*(t)y(t)dt=\frac{1}{2\pi}\int_{-\infty}^{\infty}X^*(\omega)Y(\omega)d\omega \tag{25}$$
+
+# Spettri di segnali PAM deterministici
+I segnali PAM esprimibili come convoluzione tra una serie temporale $\{a_n\}$ ed un impulso ad energia finita $g(t)$ (impulso rettangolare, di ampiezza unitaria, con origine a t=0):
+$$s(t)=\{a_n\}*g(t)=\sum_{n=-\infty}^{+\infty}a_ng(t-nT) \tag{30}$$
+-   **Serie temporale ad energia finita**, allora anche il segnale PAM è ad energia finita, e la sua trasformata è:
+$$S(\omega)=A_s(\omega)G(\omega)=\frac{1}{T}\sum_{k=-\infty}^{+\infty}A(\omega+k\omega_o)G(\omega)$$
+-   **Serie temporale a potenza finita**, allora il segnale PAM è anch'esso a potenza finita e non è possibile trasformarlo secondo Fourier. Calcolandone lo spettro di potenza come:
+$$P_{s,bil}(\omega)=\frac{|G(\omega)|^2}{2\pi T}\sum_{k=-\infty}^{+\infty}c_ke^{-jk\omega T}$$
+-   **Serie temporale $\{a_n\}$ reale**, la sua autocorrelazione $\{c_n\}$ è reale e pari, per cui la sua trasformata può essere scritta con solo riferimento agli indici positivi ottenendo: 
+$$P_{s,bil}(\omega)=\frac{|G(\omega)|^2}{2\pi T}\Bigg[c_o+2\sum_{k=1}^{+\infty}c_kcos(k\omega T)\Bigg]$$
+-   **Autocorrelazione nulla per $k$ diverso da zero**, si ottiene:
+$$P_{s,bil}(\omega)=\frac{c_o|G(\omega)|^2}{2\pi T}$$
+
+# Spettri di segnali PAM aleatori
+Un segnale PAM è aleatorio (processo stocastico) se lo è la serie temporale $\{a_n\}$. 
+**Autocorrelazione statistica (a priori)** come media statistica del prodotto delle coppie di valori posti a distanza $k$, ovvero come $E\big[a^*_na_{n+k}\big]$; se la serie è **stazionaria** la probabilità della coppia (congiunta del secondo ordine) $P(a^i, a^l, k)$ non dipende dalla posizione delle due variabili aleatorie all'interno della sequenza ma solo dalla distanza fra gli elementi, cioè da k:
+$$c_{stat,k}=E\big[a^*_na_{n+k}\big]=\sum_{i=1}^{L}\sum_{l=1}^{L}(a^i)^*a^lP(a^i, a^l, k) \tag{31}$$
+**Potenza statistica** (valore medio del secondo ordine): il valore per k = 0.
+
+**Variabili aleatorie incorrelate** a distanza $k$ se:
+$$c_{stat,k}=E\big[a^*_na_{n+k}\big]=\begin{cases}
+E\big[|a_n|^2\big] \qquad \text{se} \quad k=0 \\
+E\big[a_n^*\big]E\big[a_{n+k}\big]=E\big[a_n^*\big]E\big[a_{n}\big]\qquad \text{se} \quad k \ne 0
+\end{cases}$$
+Condizione sufficiente per l'incorrelazione è che le variabili aleatorie $a_n$ e $a_{n+k}$ siano indipendenti.
+
+Se la serie è a valor medio nullo e gli elementi della serie aleatoria sono incorrelati si ottiene infine:
+$$P_{s,bil})\omega)=\frac{E\big[|a_n|^2\big]\big|G(\omega)\big|^2}{2\pi T}$$
