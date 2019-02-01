@@ -25,11 +25,11 @@ I coefficienti $c_n$ indicano il numero complesso rappresentativo del fasore $c_
 $$c_n=\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}x(t)e^{-jn\omega_0t}dt$$
 I coefficienti $c_n$ sono in generale complessi anche quando il segnale $x(t)$ è reale. Sono invece *reali* se il segnale è *reale* e *pari*, puramente immaginarei se *reale* e *dispari*.
 # Rappresentazioni monolatere (segnali reali)
-**Simmetria hermitiana**:
-$$c_{-n}=A_{-n}e^{-j\theta_{-n}}=c_n^*=A_ne^{-j\theta_n}\tag{1}$$
-**Forma in soli coseni dello sviluppo in serie di Fourier**:
+[**Simmetria hermitiana**](#1-simmetria-hermitiana):
+$$c_{-n}=A_{-n}e^{-j\theta_{-n}}=c_n^*=A_ne^{-j\theta_n} \tag{1}$$
+[**Forma in soli coseni dello sviluppo in serie di Fourier**](#2-forma-in-soli-coseni-dello-sviluppo-in-serie-di-fourier):
 $$x(t)=c_0+2\sum_{n=1}^{+\infty}Re\{|c_n|e^{jarg{c_n}}e^{jn\omega_0t}\}=A_0+2\sum_{n=1}^{+\infty}A_ncos[n\omega_0t+\theta_n]\tag{2}$$
-**Terza forma in seni e coseni** (ma senza fasi): definendo i coefficienti monolateri $a_n$, $b_n$, anch'essi reali:
+[**Terza forma in seni e coseni**](#3-terza-forma-seni-e-coseni-senza-fasi) (ma senza fasi): definendo i coefficienti monolateri $a_n$, $b_n$, anch'essi reali:
 $$a_n=\begin{cases} 2c_0\text{ se }n=0 \\ Re\{{2c_n}\}  \text{ se } n>0  
 \end{cases}$$
 $$b_n=-Im\{2c_n\} \text{ se } n > 0$$ 
@@ -47,9 +47,9 @@ $$b_n =  \frac{2}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}x(t)sin[n\omega_0t]dt \text
 
 
 # Rappresentazioni monolatere (segnali reali); integrale di Fourier
-**Integrale di Fourier**: definito $V(\omega)=|\frac{X(\omega)}{\pi}|$, l'integrale di Fourier è:
+[**Integrale di Fourier**](#5-integrale-di-fourier): definito $V(\omega)=|\frac{X(\omega)}{\pi}|$, l'integrale di Fourier è:
 $$x(t)=\int_0^{+\infty}V(\omega)cos[\omega t+ \varphi(\omega)]d\omega \tag{5}$$
-**Proprietà della trasformata di Fourier**:
+[**Proprietà della trasformata di Fourier**](#6-proprieta-trasformata-fourier):
 Sia $x(t)$ un segnale complesso con trasformata $F[x(t)]=X(\omega)$:
 -   **Coniugazione**: 
 $$F[x^*(t)]=X^*(-\omega)$$
@@ -434,3 +434,62 @@ Condizione sufficiente per l'incorrelazione è che le variabili aleatorie $a_n$ 
 
 Se la serie è a valor medio nullo e gli elementi della serie aleatoria sono incorrelati si ottiene infine:
 $$P_{s,bil})\omega)=\frac{E\big[|a_n|^2\big]\big|G(\omega)\big|^2}{2\pi T}$$
+
+# Dimostrazioni
+### 1) Simmetria hermitiana
+Ricordando che il coniugato di un numero complesso, è il medesimo numero complesso con la parte immaginaria cambiata
+di segno e che il coniugato di un numero/funzione reale, è il medesimo numero/funzione. 
+$$c_n^*=\bigg[\frac{1}{T}\int_{-T/2}^{T/2}x(t)e^{-jn\omega_ot}dt\bigg]^*=\frac{1}{T}\int_{-T/2}^{T/2}x(t)e^{jn\omega_ot}dt=\frac{1}{T}\int_{-T/2}^{T/2}\bigg(\sum_{-k=-\infty}^{+\infty}c_{-k}e^{-jk\omega_ot}\bigg)e^{jn\omega_ot}dt \\ = \frac{1}{T}\bigg\{\sum_{-k=-\infty}^{+\infty}c_{-k}\int_{-T/2}^{T/2}e^{-jk\omega_ot}e^{jn\omega_ot}dt\bigg\}=\frac{1}{T}\bigg\{\sum_{-k=-\infty}^{+\infty}c_{-k}\int_{-T/2}^{T/2}e^{j(n-k)\omega_ot}dt\bigg\}$$
+L'integrale al secondo membro, data l'ortogonalità dei fasori, è dato da:
+$$\int_{-T/2}^{T/2}e^{j(n-k)\omega_ot}dt=\begin{cases} 
+T \qquad \text{se} \quad k=n \\ 0 \qquad \text{se} \quad k \ne n
+\end{cases}$$
+di conseguenza, come volevasi dimostrare, si ha:
+$$c_n^*=\bigg[\frac{1}{T}\int_{-T/2}^{T/2}x(t)e^{-jn\omega_ot}dt\bigg]^*=\frac{1}{T}\int_{-T/2}^{T/2}x(t)e^{jn\omega_ot}dt=c_{-n}$$
+
+## 2) Forma in soli coseni dello sviluppo in serie di fourier
+Per un segnale reale lo spettro di ampiezza risulta simmetrico rispetto all'origine e quello di fase antisimmetrico nella rappresentazione bilatera, cioè:
+$$|c_n|=|c_{-n}| \qquad arg\{c_n\}=-arg\{c_{-n}\}$$
+Sfruttando la simmetria hermitiana è possibile manipolare la funzione di sintesi in modo da utilizzare solo le frequenze positive. Spezzando quindi la sommatoria in tre termini e ricordando che la somma di due numeri complessi coniugati è pari a due volte la loro parte reale si ha:
+$$x(t)=\sum_{n=-\infty}^{-1}c_ne^{jn\omega_ot}+c_o+\sum_{n=1}^{+\infty}c_ne^{jn\omega_ot}=\sum_{n=1}^{+\infty}c_{-n}e^{-jn\omega_ot}+c_o+\sum_{n=1}^{+\infty}c_ne^{jn\omega_ot} \\ = +c_o+\sum_{n=1}^{+\infty}2Re\{c_ne^{jn\omega_ot}\}=c_o+\sum_{n=1}^{+\infty}Re\{2c_ne^{jn\omega_ot}\}$$
+Definendo gli spettri di ampiezza e fase monolateri (in quanto associati alle sole pulsazioni o frequenze positive), come: 
+$$\begin{cases} 
+A_0=c_0 \qquad \\   
+A_n = |c_n| \qquad \text{se} \quad n > 0
+\end{cases} \qquad \theta_n=arg\{c_n\}\quad \text{se} \quad n>0, A_n \ne 0$$
+Ed operando le seguenti due sostituzioni (il segno della fase è arbitrario): 
+$$c_o=A_o \qquad c_n=A_ne^{j\theta_n} \quad \text{se} \quad n>=$$
+Si ottiene infine la forma in soli coseni dello sviluppo in serie di Fourier:
+$$x(t)=c_0+2\sum_{n=1}^{+\infty}Re\{|c_n|e^{jarg{c_n}}e^{jn\omega_0t}\}=A_0+2\sum_{n=1}^{+\infty}A_ncos[n\omega_0t+\theta_n]$$
+
+## 3) Terza forma seni e coseni senza fasi 
+$$x(t)=\frac{a_0}{2}+\sum_{n=1}^{+\infty}Re\big\{(a_n-jb_n)e^{jn\omega_ot}\big\}  = \frac{a_0}{2}+\sum_{n=1}^{+\infty}Re\big\{a_ne^{jn\omega_ot}\big\} + \sum_{n=1}^{+\infty}Re\big\{(-jb_n)e^{jn\omega_ot}\big\} \\ = \frac{a_0}{2}+\sum_{n=1}^{+\infty}a_ncos[n\omega_0t]+\sum_{n=1}^{+\infty}b_nsin[n\omega_0t]$$
+
+## 5) Integrale di fourier
+Analogamente a quanto fatto in precedenza, nel caso di
+alla formula di sintesi. Quando $x(t)$ reale si possono dare delle espressioni alternative, monolatere, reale, vale la relazione (simmetria hermitiana):
+$$X(-\omega)=X^*(\omega)$$
+Sfruttando la simmetria hermitiana è possibile manipolare la funzione di sintesi in modo da utilizzare solo le frequenze positive. Spezzando quindi la sommatoria in tre termini e ricordando che la somma di due numeri complessi coniugati è pari a due volte la loro parte reale si ha:
+$$x(t)=\frac{1}{2\pi}\Bigg\{\int_{-\infty}^0X(\omega)e^{j\omega t}d\omega+\int_{0}^{+\infty}X(\omega)e^{j\omega t}d\omega\Bigg\}=\frac{1}{2\pi}\Bigg\{\int_{0}^{+\infty}X(-\omega)e^{-j\omega t}d\omega+\int_{0}^{+\infty}X(\omega)e^{j\omega t}d\omega\Bigg\} \\ = \frac{1}{2\pi}\int_{0}^{+\infty}2Re \bigg\{X(\omega)e^{j\omega t}\bigg\} d\omega = \frac{1}{2\pi}\int_{0}^{+\infty}2Re \big\{|X(\omega)|e^{jarg\{X(\omega)\}}e^{j\omega t}d\omega\big\} = \int_0^{+\infty}\frac{|X(\omega)|}{\pi}cos\big[arg{X(\omega)}+\omega t\big]d\omega$$
+Da cui definito lo spettro (densità spettrale) di ampiezza monolatero e quello monolatero di fase come:
+
+$$V(\omega)=\frac{|X(\omega)|}{\pi} \qquad \text{se} \quad \omega \ge 0, \qquad \varphi(\omega)=arg\{X(\omega)\} \qquad \text{se} \quad \omega \ge 0, V(\omega)\ne 0$$
+
+Otteniamo la seguente espressione, definita come integrale di Fourier:
+
+$$x(t)=\int_0^{+\infty}V(\omega)cos[\omega t+ \varphi(\omega)]d\omega$$
+
+## 6) Proprieta trasformata fourier
+**Coniugazione**:
+$$x(t)=\bigg[\frac{1}{2\pi}\int_{-\infty}^{+\infty}X(\omega)e^{j\omega t}d\omega\bigg]^*=\frac{1}{2\pi}\int_{-\infty}^{+\infty}X^*(\omega)e^{-j\omega t}d\omega \\ = \frac{1}{2\pi}\int_{-\infty}^{+\infty}X^*(-\omega)e^{j\omega t}d\omega=F^{-1}\big[X^*(-\omega)\big]$$
+**Traslazione temporale**:
+$$F[x(t-t_o)]=\int_{-\infty}^{+\infty}x(t-t_o)e^{-j\omega t}dt\\ =\int_{-\infty-t_o}^{+\infty-t_o}x(u)e^{-j\omega(u+t_o)}du \quad \text{con} \begin{cases}
+    u=t-t_o, \quad \text{se} \quad t=+\infty \Rightarrow u=+\infty -t_o = +\infty
+    \\ t = u-t_o, \quad \text{se} \quad t=-\infty \Rightarrow u=-\infty -t_o=-\infty
+    \\ dt = du
+\end{cases}
+\\ =e^{-j\omega t_o}\int_{-\infty}^{+\infty}x(u)e^{-j\omega u}du = X(\omega)e^{-j\omega t_o} $$
+**Derivata**:
+$$x'(t)=\frac{d}{dt}\bigg\{\frac{1}{2\pi}\int_{-\infty}^{+\infty}X(\omega)e^{j\omega t}d\omega\bigg\}=\frac{1}{2\pi}\int_{-\infty}^{+\infty}X(\omega)\frac{d}{dt}e^{j\omega t}d\omega = F^{-1}\big[j\omega X(\omega)\big]$$
+**Convoluzione**:
+$$x(t)*y(t)=\int_{-\infty}^{+\infty}x(\tau)y(t-\tau)d\tau=\int_{-\infty}^{+\infty}x(\tau)\bigg(\frac{1}{2\pi}\int_{-\infty}^{+\infty}Y(\omega)e^{j\omega(t-\tau)}d\omega\bigg)d\tau \\ = \frac{1}{2\pi} \int_{-\infty}^{+\infty}Y(\omega)\bigg(\int_{-\infty}^{+\infty}x(\tau)e^{-j\omega\tau}d\tau\bigg)e^{j\omega t}d\omega = \frac{1}{2\pi} \int_{-\infty}^{+\infty}Y(\omega)X(\omega)e^{j\omega t}d\omega=F^{-1}[Y(\omega)X(\omega)]$$
