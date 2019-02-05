@@ -178,6 +178,23 @@ $$y(t)=A_xT(\omega_1)cos\big[\omega_1t-\varphi_x-\beta(\omega_1)\big]=A_ycos(\om
 **FDT sistemi in cascata**: è uguale al prodotto delle funzioni di trasferimento dei vari blocchi:
 $$H(\omega)=H(\omega_1)H(\omega_2)...H(\omega_n)\tag{19}$$
 
+# Conversione analogico/digitale tecnica PCM
+
+Il campionamento detto **PCM (Pulse Code Modulation)** prevede tre passaggi:
+1.  **Campionamento**: Il campionatore campiona il segnale $x(t)$ ad una frequenza di campionamento $f_o$ prefissata, ottenendo la serie temporale $\{x_n\}, x_n=x(nT)$. Per il teorema di Shannon la frequenza di campionamento dovra essere necessariamente $f_o>2f_m$. La condizione è sufficiente per evitare l'aliasing.
+2.  **Quantizzazione**: La serie temporale $\{x_n\}$ è un segnale tempo-discreto, ma non discreto nei valori. Assumento $x(t)$ bilanciato, con valori compresi nell'intervallo $[-M,M]$, i campioni risultano anch'essi compresi in detto intervalo, potendo assumere qualsiasi valore all'interno di esso. Per poter procedere occorre ridurre il numero dei valori da infinito a finito. L'operazione viene detta quantizzazione. L'intervallo su cui opera il quantizzatore, $[-Mq, Mq]$ viene suddiviso in un numero finito di intervalli di quantizzazione, e tutti i valori interni a ciascuno di questi vengono identificati con uno di essi, che indichiamo con $q_n$. La differenza fra campione e valore quantizzato corrispondente si dice "errore" di quantizzazione: $e_n=x_n-q_n$. La lagge di quantizzazione è: $q_n=f(x_n)$. L'aumento del numero di livelli di campionamento diminuisce l'errore di quantizzazione, ma aumenta i bit necessari a rappresentare il segnale.
+3.  **Codifica**: Associa ad ognuno degli $L$ livelli che possono essere assunti dai valori quantizzati una parola formata da un certo numero di bit, in modo da avere una corrispondenza biunivoca fra valori ed "etichette" binarie. Si assume che tutte le etichette sono formate dallo stesso numero di bit, che dovra quindi essere : $l\ge \log_2 L$. DI norma conviene prendere $L$ potenza di due. Premesso questo quindi, il codificatore associa ad ogni elemento della serie $\{q_n\}$ una parola di $l$ bit ottenendo una serie di parole binarie $\big\{b_n^1b_n^2...b_n^l\big\}$. Gli elementi di tale serie, anzichè a blocchi di $l$ possono essere pensati come singoli bit, cioè come elementi di una serie binaria con intervallo fra bit, detto tempo di bit, ridotto di un fattore $l$, $T_b=\frac{T}{l}$.
+
+# Conversione digitale/analogica tecnica PCM
+
+LA conversione D/A prevede solo due passi:
+1.  **Decodifica**: Si ricostruiscono i valori quantizzati $\{q_n\}$, a partire dalle parole di codice $\{b_n^1b_n^2...b_n^l\}$. Essendo la quantizzazione una operazione non reversibile, la serie $\{q_n\}$ deve necessariamente essere trattata come se fosse la serie $\{x_n\}$ dei valori campionati. L'errore di quantizzazione farà però si che il segnale ricostruito differisca da quello originale, e prende il nome di rumore di quantizzazione: $e(t)=x_r(t)-x(t)$.
+2. **Ricostruzione del segnale**:
+   1.  **Generazione del segnale PAM**: Si riscostruisce il segnale a partire dal segnale PAM ottenuto come prodotto di convoluzione della serie dei valori quantizzati, equivalente ai campioni, a meno dell'errore dovuto alla quantizzazione, con un impulso rettangolare $g(t)$, di ampiezza unitaria, con origine a $t=0$. Si ottiene quindi il segnale PAM : $y(t)=\{x_n\}*g(t)=\sum_{n=-\infty}^{+\infty}x_ng(t-nT)$
+   2.  **Filtratura passa-basso**: Possiamo ricostruire il segnale $x(t)$ a partire da quello PAM, richiamando i risultati ottentui per la trasformata di un segnale PAM: $Y(\omega)=X_s(\omega)G(\omega)=\frac{1}{T}\sum_{k=-\infty}^{+\infty}X(\omega+k\omega_o)G(\omega)$. Si ha in uscita al filtro: $Y(\omega)=X(\omega)\frac{G(\omega)}{T}$.
+   3.  **Eventuale equalizzazione**: Per ottener il segnale originario occorre porre in cascata al filtro passa-basso una rete equalizzatrice la cui funzione di trasferimento è data da: $H_e(\omega)\begin{cases} \frac{T}{G(\omega)} \qquad \text{se}\quad |\omega|\le \omega_m \\ \text{qualsiasi} \qquad \text{se} \quad |\omega|>\omega_m
+   \end{cases}$
+
 # Teoria della modulazione
 **Modulazione**: Modulazione di una oscillazione sinusoidale, a frequenza sufficientemente elevata, detta *portante*. Il segnale $x(t)$ si dice segnale *modulante* in quanto modula le caratteristiche della portante (ampiezza e/o argomento). Il segnale ottenuto $s(t)$ è detto oscillazione *modulata*.
 
