@@ -435,6 +435,44 @@ Condizione sufficiente per l'incorrelazione è che le variabili aleatorie $a_n$ 
 Se la serie è a valor medio nullo e gli elementi della serie aleatoria sono incorrelati si ottiene infine:
 $$P_{s,bil})\omega)=\frac{E\big[|a_n|^2\big]\big|G(\omega)\big|^2}{2\pi T}$$
 
+# Cenni sui segnali digitali aleatori in banda base
+
+Il segnale numerico che viene trasmesso è il segnale PAM che si ottiene convolvendo questa serie temporale con l'impulso $g(t)$.
+
+**Codifica binaria**: 
+Questa codifica trasforma i bit a "0" in "-1", allo scopo di rendere a balor medio nullo la serie temporale degli $\{a_n\}$ che ovviamente risulta reale.
+
+$$E[a_n]=0$$
+
+$$c_{stat,k}=\begin{cases} E[a_n^2]=1\qquad \text{se}\quad k = 0 \\ E[a_n]E[a_n]=0\qquad \text{se} \quad k \ne 0
+\end{cases}$$
+
+**Codifica multilivello**:
+E' un'estensione della codifica bipolare, nella quale viene emesso un simbolo ogni $l$ bit, per cui si ha 
+$$T=lT_{b}, \qquad f_s=\frac{f_b}{l}$$
+
+I simboli possono assumere i seguenti $L=2^l$ valori:
+$$a_n = \pm 1, \pm 3,..., \pm (L-1)$$
+
+Il valor medio è nullo mentre la funzione di autocorrelazione statistica è data da:
+$$c_{stat,k}=\begin{cases} E[a_n^2]=\frac{L^2-1}{3} \qquad \text{se} \quad k=0 \\ E[a_n]E[a_n]=0 \qquad \text{se} \quad k \ne 0 
+\end{cases} \tag{32}$$
+
+# Spettri dei segnali PAM aleatori con codifica multilivello
+
+Nel caso di codifica multilivello (comprendente il caso bipolare), la autocorrelazione è nulla tranne che nell'origine. Lo spettro del segnale PAM diventa quindi:
+$$P_{s,bil}(\omega)=\frac{E\bigg[|a_n|^2\bigg]|G(\omega)|^2}{2\pi T}$$
+
+Se come impulos $g(t)$ si prende l'impulso rettangolare di durata $T$, la sua trasformata è data da:
+$$G(\omega)=T\frac{sin(\omega\frac{T}{2})}{\omega\frac{T}{2}}$$
+
+Da cui: 
+$$P_{s,bil}(\omega)=\frac{E\bigg[|a_n|^2\bigg]T}{2\pi T} \Bigg| \frac{sin(\omega\frac{T}{2})}{\omega\frac{T}{2}}\Bigg|^2 $$
+
+E passando alle frequenze:
+
+$$=\frac{E\bigg[|a_n|^2\bigg]}{f_s} \Bigg|sinc\bigg(\frac{f}{f_s}\bigg)\Bigg|^2$$
+
 # Dimostrazioni
 ### 1) Simmetria hermitiana
 Ricordando che il coniugato di un numero complesso, è il medesimo numero complesso con la parte immaginaria cambiata
