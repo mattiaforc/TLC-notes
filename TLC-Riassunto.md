@@ -174,6 +174,8 @@ $$\begin{cases} T(\omega)=|H(\omega)| \qquad \text{Ampiezza}\\ \beta(\omega)=arg
 $$y(t)=c_ye^{j\omega_1t}, \qquad c_y=c_xH(\omega_1) \tag{17}$$
 -   **Risposta ad una sinusoide**: Sinusoide in ingresso, $h(t)\in\R \rightarrow$ sinusoide in uscita, medesima  frequenza angolare e diversa ampiezza e fase, cioè diverso numero complesso rappresentativo. Se $x(t)=A_xcos(\omega_1t-\varphi_x)$, la rete risponde con (dove $A_y = A_xT(\omega_1)$, e $\varphi_y=\varphi_x+\beta(\omega_1)$):
 $$y(t)=A_xT(\omega_1)cos\big[\omega_1t-\varphi_x-\beta(\omega_1)\big]=A_ycos(\omega_1t-\varphi_y)\tag{18}$$
+-   **Risposta ad un segnale trasformabile in serie di Fourier**: 
+$$X(\omega) \qquad \qquad \qquad \qquad Y(\omega)=X(\omega)Y(\omega) \\ x(t)=\sum_{n=-\infty}^{+\infty}c_ne^{jn\omega_ot} \qquad y(t)=\sum_{n=-\infty}^{+\infty}c_nH(n\omega_o)e^{jn\omega_ot} \\ x(t)= A_o+2\sum_{n=1}^{+\infty}A_ncos\big[n\omega_ot-\theta_n\big] \qquad y(t)=A_oH(0)+2\sum_{n=1}^{+\infty}A_nT(n\omega_o)cos\big[n\omega_ot-\theta_n-\beta(n\omega_o)\big] \\ x(t)= \int_{0}^{+\infty}V(\omega)cos\big[\omega t-\varphi(\omega)\big]d\omega \qquad y(t) = \int_0^{+\infty}V(\omega)T(\omega)cos\big[\omega t - \varphi(\omega) - \beta(\omega)\big]d\omega$$
 
 **FDT sistemi in cascata**: è uguale al prodotto delle funzioni di trasferimento dei vari blocchi:
 $$H(\omega)=H(\omega_1)H(\omega_2)...H(\omega_n)\tag{19}$$
