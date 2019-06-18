@@ -1,6 +1,6 @@
 # TLC - Definizioni
 **Modulo e argomento di un numero complesso**:
-| | Modulo| Argomento |
+| | Modulo| Argomento | |
 |-|-|-|
 |Forma trigonometrica $z=r(cos(\theta)+isin(\theta))$| $r$ | $\theta$ |
 |Forma esponenziale $z=re^{i\theta}$| $r$ | $\theta$ |
@@ -11,20 +11,23 @@ $$\theta = Arg(z)=\begin{cases} \frac{\pi}{2}\text{ se } a=0,b>0\\ -\frac{\pi}{2
 \end{cases}$$
 
 **Seno e coseno in termini di somma e differenza di esponenziali**: 
-$$cos(\theta)=\frac{e^{j\theta}+e^{-j\theta}}{2}, sin(\theta) = \frac{e^{j\theta}+e^{-j\theta}}{j2}$$
+$$cos(\theta)=\frac{e^{j\theta}+e^{-j\theta}}{2}, sin(\theta) = \frac{e^{j\theta}-e^{-j\theta}}{j2}$$
 **Funzione sinusoidale**: 
 $$x(t)=Acos(\omega t+\theta)$$
 esprimibile anche come come somma di due funzioni esponenziali complesse:
 $$Acos(\omega t + \theta) = \frac{A}{2}e^{j(\omega t+\theta)}+\frac{A}{2}e^{-j(\omega t+\theta)}$$
 **Fasore**:
 $$Ae^{j(\omega t+\theta)}$$
+
 # Sviluppo in serie di Fourier (funzioni periodiche tempo continue)
-**Forma esponenziale (segnali complessi)**: Data la funzione complessa $x(t)=x(t+T)$ con $x \in C\R$, può essere rappresentata come somma di infiniti fasori, aventi pulsazioni multiple della pulsazione fondamentale $\omega_0 = \frac{2\pi}{T}$ (in rad/s) (frequenza fondamentale in Hz = $f_0=\frac{1}{T}$) secondo la **formula di sintesi** seguente detta **serie di Fourier (in forma esponenziale)**:
+
+**Forma esponenziale (segnali complessi)**: Data la funzione complessa $x(t)=x(t+T)$ con $x \in C \rm I\!R$, può essere rappresentata come somma di infiniti fasori, aventi pulsazioni multiple della pulsazione fondamentale $\omega_0 = \frac{2\pi}{T}$ (in rad/s) (frequenza fondamentale in Hz = $f_0=\frac{1}{T}$) secondo la **formula di sintesi** seguente detta **serie di Fourier (in forma esponenziale)**:
 $$x(t)=\sum_{n=-\infty}^{+\infty}c_ne^{jn\omega_0t}$$
 I coefficienti $c_n$ indicano il numero complesso rappresentativo del fasore $c_n = A_ne^{j\theta n}$, e sono dati dalla **formula di analisi**:
 $$c_n=\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}x(t)e^{-jn\omega_0t}dt$$
 I coefficienti $c_n$ sono in generale complessi anche quando il segnale $x(t)$ è reale. Sono invece *reali* se il segnale è *reale* e *pari*, puramente immaginarei se *reale* e *dispari*.
 # Rappresentazioni monolatere (segnali reali)
+
 [**Simmetria hermitiana**](#1-simmetria-hermitiana):
 $$c_{-n}=A_{-n}e^{-j\theta_{-n}}=c_n^*=A_ne^{-j\theta_n} \tag{1}$$
 [**Forma in soli coseni dello sviluppo in serie di Fourier**](#2-forma-in-soli-coseni-dello-sviluppo-in-serie-di-fourier):
@@ -170,9 +173,10 @@ $$\begin{cases} T(\omega)=|H(\omega)| \qquad \text{Ampiezza}\\ \beta(\omega)=arg
 \end{cases}$$
 
 **Proprietà della FDT** (rete lineare tempo-invariante):
+
 -   **Risposta ad un fasore**: Fasore in ingresso $\rightarrow$ fasore in uscita, medesima frequenza angolare e diverso numero complesso rappresentativo. Se il segnale in ingresso è $x(t)=e^{j\omega_1t}$, la rete risponde con: 
 $$y(t)=c_ye^{j\omega_1t}, \qquad c_y=c_xH(\omega_1) \tag{17}$$
--   **Risposta ad una sinusoide**: Sinusoide in ingresso, $h(t)\in\R \rightarrow$ sinusoide in uscita, medesima  frequenza angolare e diversa ampiezza e fase, cioè diverso numero complesso rappresentativo. Se $x(t)=A_xcos(\omega_1t-\varphi_x)$, la rete risponde con (dove $A_y = A_xT(\omega_1)$, e $\varphi_y=\varphi_x+\beta(\omega_1)$):
+-   **Risposta ad una sinusoide**: Sinusoide in ingresso, $h(t)\in \rm I\!R \rightarrow$ sinusoide in uscita, medesima  frequenza angolare e diversa ampiezza e fase, cioè diverso numero complesso rappresentativo. Se $x(t)=A_xcos(\omega_1t-\varphi_x)$, la rete risponde con (dove $A_y = A_xT(\omega_1)$, e $\varphi_y=\varphi_x+\beta(\omega_1)$):
 $$y(t)=A_xT(\omega_1)cos\big[\omega_1t-\varphi_x-\beta(\omega_1)\big]=A_ycos(\omega_1t-\varphi_y)\tag{18}$$
 -   **Risposta ad un segnale trasformabile in serie di Fourier**: 
 $$X(\omega) \qquad \qquad \qquad \qquad Y(\omega)=X(\omega)Y(\omega) \\ x(t)=\sum_{n=-\infty}^{+\infty}c_ne^{jn\omega_ot} \qquad y(t)=\sum_{n=-\infty}^{+\infty}c_nH(n\omega_o)e^{jn\omega_ot} \\ x(t)= A_o+2\sum_{n=1}^{+\infty}A_ncos\big[n\omega_ot-\theta_n\big] \qquad y(t)=A_oH(0)+2\sum_{n=1}^{+\infty}A_nT(n\omega_o)cos\big[n\omega_ot-\theta_n-\beta(n\omega_o)\big] \\ x(t)= \int_{0}^{+\infty}V(\omega)cos\big[\omega t-\varphi(\omega)\big]d\omega \qquad y(t) = \int_0^{+\infty}V(\omega)T(\omega)cos\big[\omega t - \varphi(\omega) - \beta(\omega)\big]d\omega$$
